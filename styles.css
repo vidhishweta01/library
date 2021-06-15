@@ -1,0 +1,26 @@
+body{
+  background-image: url(./assets/bach.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(6, 26, 53);
+}
+
+.form{
+  background-color: rgb(6, 26, 53);
+  padding: 20px; 
+}
+.book {
+    
+    background-image: url(./assets/book.jpg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 260px!important;
+    height: 300px!important;
+  }
+  
+  .book-read,
+  .delete-button {
+    background-color: #f1b81c;
+  }
