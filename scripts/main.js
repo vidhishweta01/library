@@ -76,10 +76,10 @@ submitButton.addEventListener('click', (bookData) => {
   let pages = document.getElementById('pages').value;
   pages = parseInt(pages);
   let read = '';
-  if (document.getElementById('Not yet read').checked) {
-    read = document.getElementById('Not yet read').value;
+  if (document.getElementById('Notyetread').checked) {
+    read = document.getElementById('Notyetread').value;
   } else {
-    read = document.getElementById('Finished reading').value;
+    read = document.getElementById('Finishedreading').value;
   }
   addBookToLibrary(title, author, pages, read);
   form.reset();

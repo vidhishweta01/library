@@ -7,17 +7,17 @@ body {
 
 .form {
   background-color: rgb(6, 26, 53);
-  padding: 20px; 
+  padding: 20px;
 }
 
-.book {  
+.book {
   background-image: url(./assets/book.jpg);
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 260px!important;
-  height: 300px!important;
+  width: 260px !important;
+  height: 300px !important;
 }
 
 .book-read,
