@@ -25,10 +25,10 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function save_data() {
-  localStorage.setItem('length', parseInt(myLibrary.length));
+  localStorage.setItem('length', parseInt(myLibrary.length)); // eslint-disable-line
   for (i = 0; i < myLibrary.length; i++)
   {
-    j = parseInt(i);
+    j = parseInt(i); // eslint-disable-line
     localStorage.setItem(j, JSON.stringify(myLibrary[i]));
   }  
 }
@@ -42,7 +42,7 @@ function previous_data() {
   var l = localStorage.getItem("length");
   var books = [];
   for (j = 0; j < l; j++) {
-   let k = parseInt(j);
+   let k = parseInt(j); // eslint-disable-line
    obj = JSON.parse(localStorage.getItem(k));
     document.getElementById("demo").innerHTML = obj.title +" "+ obj.author+" "+obj.read;
   }
