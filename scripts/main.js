@@ -7,7 +7,7 @@ function validateForm() {
   const x = document.getElementById('title').value;
   let bool = true;
 
-  if (x === ''){
+  if (x === '') {
     alert('Book cannot be empty');
     bool = false;
   }
@@ -28,8 +28,8 @@ function addBookToLibrary(title, author, pages, read) {
 
 function saveData() {
   localStorage.setItem('length', parseInt(myLibrary.length)); // eslint-disable-line
-  
-  for (let i = 0; i < myLibrary.length; i + 1){
+
+  for (let i = 0; i < myLibrary.length; i + 1) {
     let j = parseInt(i); // eslint-disable-line
     localStorage.setItem(j, JSON.stringify(myLibrary[i]));
   }
@@ -50,7 +50,7 @@ function previousData() {
   }
 }
 
-function display(){
+function display() {
   const container = document.querySelector('.js-container');
   container.innerHTML = '';
 
@@ -99,7 +99,7 @@ function display(){
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
   previousData();
-  
+
   if (validateForm()) {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
