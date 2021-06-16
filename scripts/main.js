@@ -3,6 +3,14 @@ const submitButton = document.querySelector('.submit-btn');
 const form = document.querySelector('form');
 
 // FUNCTIONS
+function validateForm() {
+  var x = document.forms["myForm"]["title"].value;
+  if (x == "") {
+    alert("Book can't be empty");
+    return false;
+  }
+  else return true;
+}
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -16,15 +24,34 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
+function save_data() {
+  localStorage.setItem('length', parseInt(myLibrary.length));
+  for (i = 0; i < myLibrary.length; i++)
+  {
+    j = parseInt(i);
+    localStorage.setItem(j, JSON.stringify(myLibrary[i]));
+  }  
+}
+
 function deleteBook() {
   myLibrary.splice(this.parentNode, 1);
   this.parentNode.remove();
 }
 
+function previous_data() {
+  var l = localStorage.getItem("length");
+  var books = [];
+  for (j = 0; j < l; j++) {
+   let k = parseInt(j);
+   obj = JSON.parse(localStorage.getItem(k));
+    document.getElementById("demo").innerHTML = obj.title +" "+ obj.author+" "+obj.read;
+  }
+}
+
 function display() {
   const container = document.querySelector('.container');
   container.innerHTML = '';
-
+  
   myLibrary.forEach((book) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
@@ -62,24 +89,30 @@ function display() {
     });
 
     deleteButton.addEventListener('click', deleteBook);
-  });
+  })
 }
 
 // EVENT LISTENERS
 
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  let pages = document.getElementById('pages').value;
-  pages = parseInt(pages); // eslint-disable-line
-  let read = '';
-  if (document.getElementById('Notyetread').checked) {
-    read = document.getElementById('Notyetread').value;
-  } else {
-    read = document.getElementById('Finishedreading').value;
+  previous_data();
+  display();
+  if (validateForm())
+  {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    pages = parseInt(pages); // eslint-disable-line
+    let read = '';
+    if (document.getElementById('Notyetread').checked) {
+      read = document.getElementById('Notyetread').value;
+    } else {
+      read = document.getElementById('Finishedreading').value;
+    }
+    addBookToLibrary(title, author, pages, read);
   }
-  addBookToLibrary(title, author, pages, read);
+  save_data();
   form.reset();
   display();
 });
