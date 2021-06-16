@@ -4,12 +4,12 @@ const form = document.querySelector('form');
 
 // FUNCTIONS
 function validateForm() {
-  var x = document.forms["myForm"]["title"].value;
-  if (x == "") {
-    alert("Book can't be empty");
+  let x = document.getElementById('title').value;
+  if (x === '')
+  {
+    alert('Book cannot be empty');
     return false;
   }
-  else return true;
 }
 
 function Book(title, author, pages, read) {
@@ -24,13 +24,13 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-function save_data() {
+function saveData() {
   localStorage.setItem('length', parseInt(myLibrary.length)); // eslint-disable-line
-  for (i = 0; i < myLibrary.length; i++)
+  for (let i = 0; i < myLibrary.length; i+1)
   {
-    j = parseInt(i); // eslint-disable-line
+    let j = parseInt(i); // eslint-disable-line
     localStorage.setItem(j, JSON.stringify(myLibrary[i]));
-  }  
+  }
 }
 
 function deleteBook() {
@@ -38,13 +38,12 @@ function deleteBook() {
   this.parentNode.remove();
 }
 
-function previous_data() {
-  var l = localStorage.getItem("length");
-  var books = [];
-  for (j = 0; j < l; j++) {
-   let k = parseInt(j); // eslint-disable-line
-   obj = JSON.parse(localStorage.getItem(k));
-    document.getElementById("demo").innerHTML = obj.title +" "+ obj.author+" "+obj.read;
+function previousData() {
+  let l = localStorage.getItem("length");
+  for (let j = 0; j < l; j+1) {
+    let k = parseInt(j); // eslint-disable-line
+    let obj = JSON.parse(localStorage.getItem(k));
+    document.getElementById('demo').innerHTML = obj.title + ' ' + obj.author + ' ' + obj.read;
   }
 }
 
@@ -87,7 +86,6 @@ function display() {
         ? 'Finished reading'
         : 'Not yet read';
     });
-
     deleteButton.addEventListener('click', deleteBook);
   })
 }
@@ -97,7 +95,6 @@ function display() {
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
   previous_data();
-  display();
   if (validateForm())
   {
     const title = document.getElementById('title').value;
@@ -112,7 +109,7 @@ submitButton.addEventListener('click', (bookData) => {
     }
     addBookToLibrary(title, author, pages, read);
   }
-  save_data();
+  saveData();
   form.reset();
   display();
 });
