@@ -5,7 +5,8 @@ const form = document.querySelector('form');
 // FUNCTIONS
 function validateForm() {
   const x = document.getElementById('title').value;
-  let bool = true
+  let bool = true;
+
   if (x === ''){
     alert('Book cannot be empty');
     bool = false;
@@ -27,6 +28,7 @@ function addBookToLibrary(title, author, pages, read) {
 
 function saveData() {
   localStorage.setItem('length', parseInt(myLibrary.length)); // eslint-disable-line
+  
   for (let i = 0; i < myLibrary.length; i + 1){
     let j = parseInt(i); // eslint-disable-line
     localStorage.setItem(j, JSON.stringify(myLibrary[i]));
@@ -39,7 +41,8 @@ function deleteBook() {
 }
 
 function previousData() {
-  let l = localStorage.getItem('length');
+  const l = localStorage.getItem('length');
+
   for (let j = 0; j < l; j + 1) {
     let k = parseInt(j); // eslint-disable-line
     let obj = JSON.parse(localStorage.getItem(k));// eslint-disable-line
@@ -96,7 +99,8 @@ function display(){
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
   previousData();
-  if (validateForm()){
+  
+  if (validateForm()) {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
