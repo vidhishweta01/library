@@ -47,10 +47,11 @@ function previousData() {
   }
 }
 
-function display() {
-  const container = document.querySelector('.container');
+function display()
+{
+  const container = document.querySelector('.js-container');
   container.innerHTML = '';
-  
+
   myLibrary.forEach((book) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
@@ -86,15 +87,16 @@ function display() {
         ? 'Finished reading'
         : 'Not yet read';
     });
+
     deleteButton.addEventListener('click', deleteBook);
-  })
+  });
 }
 
 // EVENT LISTENERS
 
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
-  previous_data();
+  previousData();
   if (validateForm())
   {
     const title = document.getElementById('title').value;
