@@ -1,7 +1,6 @@
 const myLibrary = [];
 const submitButton = document.querySelector('.submit-btn');
 const form = document.querySelector('form');
-const addBook = document.querySelector('.add-book');
 
 // FUNCTIONS
 
@@ -68,13 +67,12 @@ function display() {
 
 // EVENT LISTENERS
 
-
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
-  pages = parseInt(pages);
+  pages = parseInt(pages); // eslint-disable-line
   let read = '';
   if (document.getElementById('Notyetread').checked) {
     read = document.getElementById('Notyetread').value;
