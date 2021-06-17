@@ -67,13 +67,12 @@ function display() {
 
 // EVENT LISTENERS
 
-
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
-  pages = parseInt(pages); //eslint disable
+  pages = parseInt(pages); //eslint-disable-line
   let read = '';
   if (document.getElementById('Notyetread').checked) {
     read = document.getElementById('Notyetread').value;
@@ -86,7 +85,7 @@ submitButton.addEventListener('click', (bookData) => {
   } else {
     alert('empty book');
   }
-    
+
   form.reset();
   display();
 });
