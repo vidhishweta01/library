@@ -71,8 +71,9 @@ submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-  let pages = document.getElementById('pages').value;
-  pages = parseInt(pages); //eslint-disable-line
+  let page1 = document.getElementById('pages').value;
+
+  pages = parseInt(page1); //eslint-disable-line
   let read = '';
   if (document.getElementById('Notyetread').checked) {
     read = document.getElementById('Notyetread').value;
@@ -80,7 +81,7 @@ submitButton.addEventListener('click', (bookData) => {
     read = document.getElementById('Finishedreading').value;
   }
 
-  if (title !== '' && author !== '' && pages !== '' && read !== '') {
+  if (title !== '' && author !== '' && !isNaN(pages) && read !== '') {
     addBookToLibrary(title, author, pages, read);
   } else {
     alert('empty book');
