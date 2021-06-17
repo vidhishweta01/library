@@ -22,14 +22,23 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="./styles.css">
 
 </head>
 <body class="text-white">
     <h1 class="text-center mt-4 text-dark font-weight-bolder">Library</h1>
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content text-dark w-50 rounded">
+        <div class="w3-container">
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          <p>empty book</p>
+          <p>please fill all field</p>
+        </div>
+      </div>
+    </div>
   
     <div class="container d-flex justify-content-center" ></div>
-  
     <div class="text-center">
       <form class="form mx-auto" name="myForm">
         <label for="title">Book</label>
@@ -54,7 +63,15 @@
         </div>
       </form>
     </div>
-    <div id="demo"></div>
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          <p>Empty book</p>
+          <p>fill all the</p>
+        </div>
+      </div>
+    </div>
     <script src="./scripts/main.js"></script>
 </body>
 </html>

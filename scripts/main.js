@@ -84,7 +84,7 @@ submitButton.addEventListener('click', (bookData) => {
   if (title !== '' && author !== '' && !isNaN(pages) && read !== '') { //eslint-disable-line
     addBookToLibrary(title, author, pages, read);
   } else {
-    alert('empty book');
+    document.getElementById('id01').style.display = 'block';
   }
 
   form.reset();
