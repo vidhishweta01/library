@@ -3,13 +3,6 @@ const submitButton = document.querySelector('.submit-btn');
 const form = document.querySelector('form');
 
 // FUNCTIONS
-function validateForm() {
-  var x = document.getElementById('title').value;
-  if (x === '') {
-    alert('Book cannot be empty');
-    return false;
-  }
-}
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -30,6 +23,7 @@ function deleteBook() {
 
 function display() {
   const container = document.querySelector('.container');
+  container.innerHTML = '';
 
   myLibrary.forEach((book) => {
     const bookDiv = document.createElement('div');
@@ -73,22 +67,25 @@ function display() {
 
 // EVENT LISTENERS
 
+
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
+  pages = parseInt(pages);
+  let read = '';
+  if (document.getElementById('Notyetread').checked) {
+    read = document.getElementById('Notyetread').value;
+  } else {
+    read = document.getElementById('Finishedreading').value;
+  }
 
-   if (validateForm()) {
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
-    pages = parseInt(pages); // eslint-disable-line
-    let read = '';
-    if (document.getElementById('Notyetread').checked) {
-      read = document.getElementById('Notyetread').value;
-    } else {
-      read = document.getElementById('Finishedreading').value;
-    }
+  if (title != '' && author != '' && pages != '' && read != '') {
     addBookToLibrary(title, author, pages, read);
   }
+  else
+    alert('empty book');
   form.reset();
   display();
-});
+}); 
