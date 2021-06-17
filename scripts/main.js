@@ -51,7 +51,7 @@ function previousData() {
 }
 
 function display() {
-  const container = document.querySelector('.js-container');
+  const container = document.querySelector('.container');
   container.innerHTML = '';
 
   myLibrary.forEach((book) => {
