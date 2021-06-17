@@ -4,14 +4,11 @@ const form = document.querySelector('form');
 
 // FUNCTIONS
 function validateForm() {
-  const x = document.getElementById('title').value;
-  let bool = true;
-
+  var x = document.getElementById('title').value;
   if (x === '') {
     alert('Book cannot be empty');
-    bool = false;
+    return false;
   }
-  return bool;
 }
 
 function Book(title, author, pages, read) {
@@ -26,33 +23,13 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-function saveData() {
-  localStorage.setItem('length', parseInt(myLibrary.length)); // eslint-disable-line
-
-  for (let i = 0; i < myLibrary.length; i + 1) {
-    let j = parseInt(i); // eslint-disable-line
-    localStorage.setItem(j, JSON.stringify(myLibrary[i]));
-  }
-}
-
 function deleteBook() {
   myLibrary.splice(this.parentNode, 1);
   this.parentNode.remove();
 }
 
-function previousData() {
-  const l = localStorage.getItem('length');
-
-  for (let j = 0; j < l; j + 1) {
-    let k = parseInt(j); // eslint-disable-line
-    let obj = JSON.parse(localStorage.getItem(k));// eslint-disable-line
-    document.getElementById('demo').innerHTML = obj.title + ' ' + obj.author + ' ' + obj.read;// eslint-disable-line
-  }
-}
-
 function display() {
-  const container = document.querySelector('.js-container');
-  container.innerHTML = '';
+  const container = document.querySelector('.container');
 
   myLibrary.forEach((book) => {
     const bookDiv = document.createElement('div');
@@ -98,9 +75,8 @@ function display() {
 
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
-  previousData();
 
-  if (validateForm()) {
+   if (validateForm()) {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
@@ -113,7 +89,6 @@ submitButton.addEventListener('click', (bookData) => {
     }
     addBookToLibrary(title, author, pages, read);
   }
-  saveData();
   form.reset();
   display();
 });
