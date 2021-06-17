@@ -5,6 +5,10 @@ body {
   background-color: rgb(6, 26, 53);
 }
 
+.library {
+  color:rgb(17, 30, 54) !important;
+  font-family:cursive !important;
+}
 .form {
   background-color: rgb(6, 26, 53);
   padding: 20px;
