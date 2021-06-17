@@ -26,28 +26,9 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-function saveData() {
-  localStorage.setItem('length', parseInt(myLibrary.length)); // eslint-disable-line
-
-  for (let i = 0; i < myLibrary.length; i + 1) {
-    let j = parseInt(i); // eslint-disable-line
-    localStorage.setItem(j, JSON.stringify(myLibrary[i]));
-  }
-}
-
 function deleteBook() {
   myLibrary.splice(this.parentNode, 1);
   this.parentNode.remove();
-}
-
-function previousData() {
-  const l = localStorage.getItem('length');
-
-  for (let j = 0; j < l; j + 1) {
-    let k = parseInt(j); // eslint-disable-line
-    let obj = JSON.parse(localStorage.getItem(k));// eslint-disable-line
-    document.getElementById('demo').innerHTML = obj.title + ' ' + obj.author + ' ' + obj.read;// eslint-disable-line
-  }
 }
 
 function display() {
@@ -98,7 +79,6 @@ function display() {
 
 submitButton.addEventListener('click', (bookData) => {
   bookData.preventDefault();
-  previousData();
 
   if (validateForm()) {
     const title = document.getElementById('title').value;
@@ -113,7 +93,6 @@ submitButton.addEventListener('click', (bookData) => {
     }
     addBookToLibrary(title, author, pages, read);
   }
-  saveData();
   form.reset();
   display();
 });
